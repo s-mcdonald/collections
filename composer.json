@@ -1,0 +1,23 @@
+{
+    "name": "s-mcdonald/collections",
+    "description": "Collections for PHP",
+    "keywords": ["Sam", "McDonald","collection", "collections", "generics", "lists", "arrays"],    
+    "license": "MIT",
+    "homepage": "https://github.com/s-mcdonald/collections",        
+    "authors": [
+        {
+            "name": "Sam McDonald",
+            "email": "s.mcdonald@outlook.com.au"
+        }
+    ],
+    "version": "1.0.0",    
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=7.0.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "SamMcDonald\\Collections\\": "src/"
+        }
+    }
+}
