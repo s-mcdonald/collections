@@ -392,6 +392,52 @@ abstract class Collection implements \IteratorAggregate
         return $this;
     }
 
+
+    /**
+     * safeInsert -  Insert item to a specific position
+     *               within the stack.
+     *               
+     *               To ensure type safety, this 
+     *               must be called from child class.
+     *             
+     * @param  mixed  $item 
+     * @param int $position Index of item to be placed within the internal array
+     * @return $this  The no. of items in list
+     */
+    final protected function safeInsert($item, int $position = 0)
+    {
+        // @dev: safe to do so
+        if(($this->count() > $position) && ($position > 0))
+        {
+            if($this->enforceType)
+            {        
+                $this->typeCheck($item);
+            }
+
+            $this->arrayInsertAt($item, $position);
+        }
+        elseif(($this->count() == 0) || ($position == 0))
+        {
+            return $this->safePrepend($item);
+        }
+        elseif($position > $this->count())
+        {
+            $this->items[] = $item;
+        }
+
+        return $this;
+    }
+
+
+    //@dev
+    private function arrayInsertAt($item,$position)
+    {
+        $items = $this->items;
+        $first = array_splice($items, 0, ($position)); 
+        $first[] = $item;
+        $this->items = array_merge($first,$items);
+    }
+
     /**
      * safeUnset - Unset value from the stack.
      *             If internal keys are

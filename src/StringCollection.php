@@ -85,6 +85,19 @@ class StringCollection extends Collection
         return parent::safePrepend($item);
     }
 
+
+    /**
+     * Insert string at a specific point
+     * 
+     * @param  string  $item     [description]
+     * @param  integer $position [description]
+     * @return [type]            [description]
+     */
+    public function insert(string $item, $position = 0)
+    {
+        return parent::safeInsert($item,$position);
+    }
+    
     /**
      * merge(collection)
      * 
